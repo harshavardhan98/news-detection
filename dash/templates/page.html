@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- MY CSS -->
+     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/page.css') }}">
+
+     <link rel="stylesheet" href="{{ url_for('static',filename='styles/font-awesome-animation.min.css') }}">
+
+    <title>MIB Dashboard</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">
+        <img src="http://mrsac.maharashtra.gov.in/forest/js/mrsac/viewer/assets/images/icons/goi_logo_400.png?1521849600030" width="30" height="30" class="d-inline-block align-top" alt="">
+      Ministry of Information and Broadcasting
+      </a>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-4">
+        </div>
+        <div class="col-4">
+          <br>
+          <h3> Trending </h3>
+        </div>
+        <div class="col-3">
+          <br>
+          <h3> News </h3>
+        </div>
+        <div class="col-1">
+          <br>
+            <!-- <button id="newsBut" class = "btn-outline-dark"> -->
+              <i id = "newsBut" class="fas fa-sync-alt float-right faa-wrench animated-hover"></i>
+          <!-- </button> -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+
+        </div>
+        <div class="col-4 fixedScroll">
+          <div id="tagfeed">
+            {% for tag in trending %}
+              <div class="list-group">
+                <h5><a href="{{tag[1]}}" target="_blank"> {{tag[0]}} </a></h5>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="col-4 fixedScroll">
+          <div id="newsfeed">
+            {% for tweet in tweets %}
+              <div class="list-group">
+                {{ oembed_tweet(tweet) }}
+              </div>
+            {% endfor %}
+          
+          </div>
+          <div id="lm" class="text-center">
+            <a id="loadMore" class="page-link align"> Load More? </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+
+    <script type=text/javascript>
+      $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};</script>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
+
+    <script src="{{ url_for('static', filename='js/refresh.js') }}"></script>
+
+  </body>
+</html>
