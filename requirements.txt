@@ -46,7 +46,7 @@ tweepy==3.6.0
 Twisted==17.9.0
 txaio==2.9.0
 tzlocal==1.5.1
-urllib3==1.22
+urllib3==1.26.5
 watson-developer-cloud==1.2.1
 Werkzeug==0.14.1
 zope.interface==4.4.3
