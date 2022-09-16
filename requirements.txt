@@ -23,7 +23,7 @@ idna==2.6
 incremental==17.5.0
 itsdangerous==0.24
 Jinja2==2.10
-Mako==1.0.7
+Mako==1.2.2
 MarkupSafe==1.0
 mimerender==0.6.0
 oauthlib==2.0.7
